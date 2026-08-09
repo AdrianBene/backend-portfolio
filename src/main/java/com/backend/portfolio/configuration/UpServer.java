@@ -2,15 +2,18 @@ package com.backend.portfolio.configuration;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class UpServer {
-    @Autowired
-    private DataSource dataSource;
+  
+    private final DataSource dataSource;
 
     @EventListener(ApplicationReadyEvent.class)
     public void upServer() {

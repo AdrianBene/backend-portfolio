@@ -1,4 +1,4 @@
-package com.backend.portfolio.services;
+package com.backend.portfolio.services.impl;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import com.backend.portfolio.entities.dtos.TechnologyDto;
 import com.backend.portfolio.exception.ResourceAlreadyExistException;
 import com.backend.portfolio.exception.ResourceNotFoundException;
 import com.backend.portfolio.respositories.TechnolgyRepository;
+import com.backend.portfolio.services.FileStorageService;
+import com.backend.portfolio.services.TechnologyService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -93,7 +95,15 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     public TechnologyDto converDto(Technology technology) {
-        return new TechnologyDto(technology.getName(), technology.getTypeTechnology(), technology.getIcon());
+
+        String imageUrl = null;
+        if (technology.getIcon() != null) {
+            imageUrl = "http://localhost:8080/uploads/technology/" + technology.getIcon();
+
+        }
+        List<Long> projectIds = technology.getProjects().stream().map(project -> project.getId()).toList();
+
+        return new TechnologyDto(technology.getName(), technology.getTypeTechnology(), imageUrl, projectIds);
 
     }
 
