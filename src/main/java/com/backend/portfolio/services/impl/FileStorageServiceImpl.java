@@ -16,18 +16,19 @@ import com.backend.portfolio.services.FileStorageService;
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
 
-    private static final String UPLOAD_DIR = "uploads/technology";
+    private static final String UPLOAD_DIR = "uploads";
 
     @Override
-    public String saveImage(MultipartFile image) {
+    public String saveImage(MultipartFile image,String folder) {
         
       if (image == null || image.isEmpty()) {
         return null;
       }
 
       try{
+        Path directory = Paths.get(UPLOAD_DIR,folder);
 
-        Files.createDirectories(Paths.get(UPLOAD_DIR));
+        Files.createDirectories(directory);
         String originalName = image.getOriginalFilename();
         String extension ="";
         if (originalName !=null && originalName.contains(".")) {
@@ -36,7 +37,7 @@ public class FileStorageServiceImpl implements FileStorageService {
             
         }
         String fileName = UUID.randomUUID() + extension;
-        Path path =Paths.get(UPLOAD_DIR,fileName);
+        Path path =directory.resolve(fileName);
         Files.copy(image.getInputStream(),path,StandardCopyOption.REPLACE_EXISTING);
         return fileName;
       }catch(IOException exception){
@@ -45,12 +46,13 @@ public class FileStorageServiceImpl implements FileStorageService {
     }
 
     @Override
-    public void deleteImage(String fileName) {
+    public void deleteImage(String fileName,String folder) {
         if (fileName ==null || fileName.isBlank()) {
           return;
         }
         try{
-          Path path = Paths.get(UPLOAD_DIR,fileName);
+          
+          Path path = Paths.get(UPLOAD_DIR,folder,fileName);
           Files.deleteIfExists(path);
 
         }catch(IOException exception){

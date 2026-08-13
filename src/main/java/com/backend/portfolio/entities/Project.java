@@ -1,6 +1,7 @@
 package com.backend.portfolio.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,9 +48,10 @@ public class Project {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<ProjectImage> images;
+   
+    private List<ProjectImage> images = new ArrayList<>();
     private String urlGitHub;
-    private String website;
+    private String urlWebsite;
     private LocalDateTime date_create;
     private LocalDateTime date_update;
     @ManyToMany(fetch = FetchType.LAZY)

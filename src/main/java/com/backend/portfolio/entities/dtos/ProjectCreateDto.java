@@ -8,7 +8,7 @@ public record ProjectCreateDto(
         String name,
         String description,
         String urlGitHub,
-        String website,
+        String urlWebsite,
         List<Long> technologies,
         State state) {
 

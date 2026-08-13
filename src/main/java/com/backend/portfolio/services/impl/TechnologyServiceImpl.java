@@ -30,7 +30,7 @@ public class TechnologyServiceImpl implements TechnologyService {
                     "Ya existe una tecnologia con el nombre " + technologyCreateDto.name());
 
         }
-        String imageName = fileStorageService.saveImage(image);
+        String imageName = fileStorageService.saveImage(image,"technologies");
 
         Technology technology = Technology.builder()
                 .name(technologyCreateDto.name())
@@ -72,8 +72,8 @@ public class TechnologyServiceImpl implements TechnologyService {
         technology.setTypeTechnology(technologyCreateDto.typeTechnology());
         if (image != null && !image.isEmpty()) {
 
-            String newImageName = fileStorageService.saveImage(image);
-            fileStorageService.deleteImage(technology.getIcon());
+            String newImageName = fileStorageService.saveImage(image,"technologies");
+            fileStorageService.deleteImage(technology.getIcon(),"technologies");
             technology.setIcon(newImageName);
 
         }
@@ -88,7 +88,7 @@ public class TechnologyServiceImpl implements TechnologyService {
         Technology technology = technolgyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No existe la tecnologia con el id " + id));
 
-        fileStorageService.deleteImage(technology.getIcon());
+        fileStorageService.deleteImage(technology.getIcon(),"technologies");
 
         technolgyRepository.delete(technology);
 
