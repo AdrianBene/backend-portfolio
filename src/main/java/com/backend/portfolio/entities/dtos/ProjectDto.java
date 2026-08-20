@@ -10,6 +10,7 @@ import lombok.Builder;
 
 @Builder
 public record ProjectDto(
+        Long id,
         String name,
         String description,
         List<ProjectImageDto> images,

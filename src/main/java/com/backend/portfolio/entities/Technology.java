@@ -1,5 +1,6 @@
 package com.backend.portfolio.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -34,7 +35,8 @@ public class Technology {
     private String icon;
 
     @ManyToMany(mappedBy = "technologies")
-    private List<Project> projects;
+    @Builder.Default
+    private List<Project> projects = new ArrayList<>();
     
 
 }

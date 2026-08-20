@@ -161,6 +161,7 @@ public class ProjectServiceImpl implements ProjectService {
                 .toList();
 
         return new ProjectDto(
+            project.getId(),
                 project.getName(),
                 project.getDescription(),
                 images,

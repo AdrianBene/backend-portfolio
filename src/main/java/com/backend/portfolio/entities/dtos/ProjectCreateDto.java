@@ -5,6 +5,7 @@ import java.util.List;
 import com.backend.portfolio.entities.enums.State;
 
 public record ProjectCreateDto(
+        Long id,
         String name,
         String description,
         String urlGitHub,

@@ -98,12 +98,12 @@ public class TechnologyServiceImpl implements TechnologyService {
 
         String imageUrl = null;
         if (technology.getIcon() != null) {
-            imageUrl = "http://localhost:8080/uploads/technology/" + technology.getIcon();
+            imageUrl = "http://localhost:8080/uploads/technologies/" + technology.getIcon();
 
         }
         List<Long> projectIds = technology.getProjects().stream().map(project -> project.getId()).toList();
 
-        return new TechnologyDto(technology.getName(), technology.getTypeTechnology(), imageUrl, projectIds);
+        return new TechnologyDto(technology.getId(),technology.getName(), technology.getTypeTechnology(), imageUrl, projectIds);
 
     }
 
