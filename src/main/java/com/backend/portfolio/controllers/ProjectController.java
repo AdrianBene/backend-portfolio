@@ -2,7 +2,6 @@ package com.backend.portfolio.controllers;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.backend.portfolio.entities.Project;
 import com.backend.portfolio.entities.dtos.ProjectDto;
 import com.backend.portfolio.services.ProjectService;
 

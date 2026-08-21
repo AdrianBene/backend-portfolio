@@ -1,7 +1,7 @@
 package com.backend.portfolio.services.impl;
 
 import java.util.List;
-import java.util.Set;
+
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,11 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.backend.portfolio.entities.Project;
 import com.backend.portfolio.entities.ProjectImage;
 import com.backend.portfolio.entities.Technology;
-import com.backend.portfolio.entities.dtos.ProjectCreateDto;
+
 import com.backend.portfolio.entities.dtos.ProjectDto;
 import com.backend.portfolio.entities.dtos.ProjectImageDto;
-import com.backend.portfolio.entities.dtos.TechnologyDto;
-import com.backend.portfolio.entities.enums.State;
+
 import com.backend.portfolio.exception.ResourceAlreadyExistException;
 import com.backend.portfolio.exception.ResourceNotFoundException;
 import com.backend.portfolio.respositories.ProjectRepository;
@@ -23,7 +22,7 @@ import com.backend.portfolio.services.ProjectService;
 
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
